@@ -1,12 +1,13 @@
 <template>
   <div class="my-4">
+    <p class="text-xl font-semibold mb-2">Sachins Entire Career</p>
     <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
       <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
         <table class="min-w-full leading-normal">
           <thead>
             <tr class="text-gray-600 bg-white">
               <th
-                class="p-5 border-b-2 border-white text-left text-xs font-semibold uppercase tracking-wider"
+                class="p-5 border-b-2 border-gray-200 text-left text-xs font-semibold uppercase tracking-wider"
               >
                 Scored
               </th>
@@ -71,6 +72,7 @@
             <tr
               v-for="match in matches"
               :key="match.id"
+              class="hover:bg-white"
               :class="
                 match.match_result === 'won' ? 'bg-green-200' : 'bg-red-200'
               "

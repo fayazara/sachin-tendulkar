@@ -24,7 +24,7 @@
           {{ hoverMsg }}
         </p>
       </div>
-      <h1 class="text-4xl font-semibold my-4">Sachin Tendulkar</h1>
+      <h1 class="text-4xl font-semibold my-2">Sachin Tendulkar</h1>
       <p class="text-xl">Why he is the greatest cricketer of all time.</p>
     </section>
     <nuxt-child />

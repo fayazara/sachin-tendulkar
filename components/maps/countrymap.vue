@@ -21,7 +21,7 @@
         <client-only>
           <l-map class="rounded-r-lg" :zoom="zoom" :center="center">
             <l-tile-layer
-              url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+              url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
             ></l-tile-layer>
             <l-marker
               v-for="(item, i) in countries"

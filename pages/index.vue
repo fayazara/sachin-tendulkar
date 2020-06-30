@@ -2,7 +2,7 @@
   <main
     class="max-w-2xl mx-auto text-gray-700 px-4 sm:px-4 md:px-0 lg:px-0 xl:px-0"
   >
-    <section class="py-12 text-center">
+    <section class="mb-4 text-center">
       <div
         @mouseenter="hoverOn()"
         @mouseleave="hoverOff()"

@@ -1,10 +1,16 @@
 <template>
   <div
-    class="text-center h-64 bg-white shadow rounded-lg p-4 flex items-center justify-center relative"
+    class="text-center h-map bg-white shadow rounded-lg p-6 flex items-center justify-center relative"
   >
     <div>
       <p class="text-4xl">#{{ count + 1 }}</p>
       <p class="text-xl">{{ facts[count] }}</p>
+      <img
+        v-if="count == facts.length"
+        class="h-56 w-auto"
+        src="meme.jpg"
+        alt=""
+      />
       <div
         class="flex items-center justify-between p-4 w-full absolute bottom-0 left-0"
       >
@@ -21,8 +27,10 @@
             <path d="M15 19l-7-7 7-7"></path>
           </svg>
         </button>
-        <nuxt-link to="/stats" class="underline text-indigo-600">Stats</nuxt-link>
-        <button @click="count++" :disabled="count >= facts.length - 1">
+        <nuxt-link to="/stats" class="underline text-indigo-600"
+          >Stats</nuxt-link
+        >
+        <button @click="count++" :disabled="count >= facts.length">
           <svg
             fill="none"
             stroke-linecap="round"

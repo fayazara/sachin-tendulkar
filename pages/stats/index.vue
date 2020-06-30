@@ -18,6 +18,7 @@
 </template>
 
 <script>
+
 import cards from "~/components/stats/cards";
 import countrymap from "~/components/stats/countrymap";
 export default {
@@ -27,7 +28,9 @@ export default {
     };
   },
   async fetch() {
-    const { data } = await this.$axios.get("/sachin.json");
+    //https://api.jsonbin.io/b/5efb101d7f16b71d48a88aea
+    //https://gson.fayazara.now.sh/?url=https://docs.google.com/spreadsheets/d/e/2PACX-1vTD4h0ksxxfIeV91uOVRwdk0JknCelzwaIyQYOMsmQSG8jX4qtIvZsUPLK0VI8gONEWl5JCAYm44fCD/pub?output=csv
+    const { data } = await this.$axios.get("https://gson.fayazara.now.sh/?url=https://docs.google.com/spreadsheets/d/e/2PACX-1vTD4h0ksxxfIeV91uOVRwdk0JknCelzwaIyQYOMsmQSG8jX4qtIvZsUPLK0VI8gONEWl5JCAYm44fCD/pub?output=csv");
     this.matches = data;
   },
   computed: {

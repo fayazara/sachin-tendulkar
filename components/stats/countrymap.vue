@@ -51,7 +51,7 @@ export default {
   },
   async fetch() {
     const { data } = await this.$axios.get(
-      "http://restcountries.eu/rest/v2/all?fullText=true&fields=latlng;name"
+      "https://restcountries.eu/rest/v2/all?fullText=true&fields=latlng;name"
     );
     this.allCountries = data;
   },

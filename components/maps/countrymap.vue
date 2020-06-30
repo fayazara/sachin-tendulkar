@@ -1,15 +1,15 @@
 <template>
   <div class="my-6">
-    <p>Map</p>
+    <p class="text-xl font-semibold mb-4">Coutries he has played in</p>
     <div
-      class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 bg-white rounded-lg shadow-lg"
+      class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-2 bg-white rounded-lg shadow"
     >
-      <ul style="height:400px" class="w-full divide-y overflow-y-auto">
+      <ul class="h-map w-full divide-y overflow-y-auto">
         <li
           @click="selectCountry(item.country)"
           v-for="(item, j) in countries"
           :key="j"
-          class="px-4 py-2 cursor-pointer"
+          class="p-3 cursor-pointer hover:bg-indigo-500 hover:text-white transition-colors duration-200"
         >
           <p>
             {{ item.count }} matches in
@@ -17,7 +17,7 @@
           </p>
         </li>
       </ul>
-      <div style="height:400px">
+      <div class="h-map">
         <client-only>
           <l-map class="rounded-r-lg" :zoom="zoom" :center="center">
             <l-tile-layer
@@ -83,5 +83,3 @@ export default {
   }
 };
 </script>
-
-<style></style>

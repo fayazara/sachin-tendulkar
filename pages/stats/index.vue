@@ -1,6 +1,6 @@
 <template>
   <main class="container mx-auto py-12 px-4 text-gray-700">
-    <h1>Stats</h1>
+    <h1 class="text-4xl font-semibold">Sachins Career Visualisation</h1>
     <p v-if="$fetchState.pending">Fetching stats...</p>
     <p v-else-if="$fetchState.error">
       Error while fetching stats: {{ $fetchState.error.message }}
@@ -13,14 +13,19 @@
         :careerSpan="careerSpan"
       />
       <countrymap :countries="countries" />
+      <runs :runsTimeline="runsTimeline" />
+      <toss :tosses="tosses" :innings="innings" />
+      <matchestable :matches="matches" />
     </section>
   </main>
 </template>
 
 <script>
-
 import cards from "~/components/stats/cards";
-import countrymap from "~/components/stats/countrymap";
+import countrymap from "~/components/maps/countrymap";
+import runs from "~/components/charts/runs";
+import toss from "~/components/charts/toss";
+import matchestable from "~/components/tables/matches";
 export default {
   data() {
     return {
@@ -30,22 +35,27 @@ export default {
   async fetch() {
     //https://api.jsonbin.io/b/5efb101d7f16b71d48a88aea
     //https://gson.fayazara.now.sh/?url=https://docs.google.com/spreadsheets/d/e/2PACX-1vTD4h0ksxxfIeV91uOVRwdk0JknCelzwaIyQYOMsmQSG8jX4qtIvZsUPLK0VI8gONEWl5JCAYm44fCD/pub?output=csv
-    const { data } = await this.$axios.get("https://gson.fayazara.now.sh/?url=https://docs.google.com/spreadsheets/d/e/2PACX-1vTD4h0ksxxfIeV91uOVRwdk0JknCelzwaIyQYOMsmQSG8jX4qtIvZsUPLK0VI8gONEWl5JCAYm44fCD/pub?output=csv");
+    const { data } = await this.$axios.get("/sachin.json");
     this.matches = data;
+  },
+  methods: {
+    getCleanedScore(val) {
+      if (val == "DNB" || val == "TDNB") {
+        return 0;
+      } else {
+        if (typeof val == "string") {
+          if (val.includes("*")) {
+            return parseInt(val.split("*")[0]);
+          }
+        } else return val;
+      }
+    }
   },
   computed: {
     lifetimeRuns() {
       let score = null;
       const runs = this.matches.reduce((a, match) => {
-        if (match.batting_score == "DNB" || match.batting_score == "TDNB") {
-          score = 0;
-        } else {
-          if (typeof match.batting_score == "string") {
-            if (match.batting_score.includes("*")) {
-              score = parseInt(match.batting_score.split("*")[0]);
-            }
-          } else score = match.batting_score;
-        }
+        score = this.getCleanedScore(match.batting_score);
         return a + score;
       }, 0);
       return runs;
@@ -85,13 +95,35 @@ export default {
         }
       }, []);
       return uniqueLocations;
+    },
+    runsTimeline() {
+      return this.matches.map(match => {
+        return {
+          runsScored: this.getCleanedScore(match.batting_score),
+          runsConceded: match.runs_conceded === "-" ? 0 : match.runs_conceded,
+          date: match.date
+        };
+      });
+    },
+    tosses() {
+      return [
+        this.matches.filter(x => x.toss === "won").length,
+        this.matches.filter(x => x.toss === "lost").length
+      ];
+    },
+    innings() {
+      return [
+        this.matches.filter(x => x.batting_innings === "1st").length,
+        this.matches.filter(x => x.batting_innings === "2nd").length
+      ];
     }
   },
   components: {
     cards,
-    countrymap
+    countrymap,
+    runs,
+    toss,
+    matchestable
   }
 };
 </script>
-
-<style></style>

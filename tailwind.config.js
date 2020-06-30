@@ -5,6 +5,9 @@ module.exports = {
         'sachin': '-3rem',
         'thuglife-y': '90px',
         'thuglife-x': '57px',
+      },
+      spacing: {
+        'map': '400px'
       }
     }
   },

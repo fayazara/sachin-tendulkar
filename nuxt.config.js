@@ -35,6 +35,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    { src: '~/plugins/apexcharts.js', ssr: false }
   ],
   /*
   ** Auto import components

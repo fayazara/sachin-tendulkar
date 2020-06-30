@@ -1,5 +1,5 @@
 # Sachin Tendulkar
-A website to visualising stats on Sachins career proving he is the greatest cricket player of all time.
+A website visualising stats on Sachins career proving he is the greatest cricket player of all time.
 
 Website: [https://sachintendulkar.netlify.app/](https://sachintendulkar.netlify.app/)
 

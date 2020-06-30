@@ -20,7 +20,7 @@
           <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
         </svg>
         <p class="pt-4 text-xl font-semibold">Know Why</p>
-        <p class="text-gray-200 text-xs">I Know you want to</p>
+        <p class="text-gray-200 text-xs">A montage</p>
       </div>
     </nuxt-link>
     <nuxt-link
@@ -42,7 +42,7 @@
           ></path>
         </svg>
         <p class="pt-4 text-xl font-semibold">Career stats</p>
-        <p class="text-gray-200 text-xs">The serious stuff</p>
+        <p class="text-gray-200 text-xs">The actual assignment</p>
       </div>
     </nuxt-link>
   </section>

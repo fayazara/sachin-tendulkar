@@ -1,8 +1,8 @@
 <template>
   <main
-    class="max-w-2xl mx-auto text-gray-700 px-4 sm:px-4 md:px-0 lg:px-0 xl:px-0"
+    class="max-w-2xl mx-auto text-gray-700 p-4 sm:px-4 md:px-0 lg:px-0 xl:px-0"
   >
-    <section class="mb-4 text-center">
+    <section class="mb-4 pt-12 text-center">
       <div
         @mouseenter="hoverOn()"
         @mouseleave="hoverOff()"
@@ -18,15 +18,16 @@
           class="absolute inset-x-0 top-thuglife-y left-thuglife-x"
           alt=""
         />
+        <p
+          class="hidden lg:block xl:block text-xs text-center mt-4 text-gray-600"
+        >
+          {{ hoverMsg }}
+        </p>
       </div>
       <h1 class="text-4xl font-semibold my-4">Sachin Tendulkar</h1>
       <p class="text-xl">Why he is the greatest cricketer of all time.</p>
     </section>
     <nuxt-child />
-
-    <p class="hidden lg:block xl:block text-xs text-center mt-4 text-gray-600">
-      {{ hoverMsg }}
-    </p>
     <audio ref="thuglife" src="/audio/music.mp3"></audio>
   </main>
 </template>

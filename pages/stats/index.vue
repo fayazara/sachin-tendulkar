@@ -35,7 +35,7 @@ export default {
   async fetch() {
     //https://api.jsonbin.io/b/5efb101d7f16b71d48a88aea
     //https://gson.fayazara.now.sh/?url=https://docs.google.com/spreadsheets/d/e/2PACX-1vTD4h0ksxxfIeV91uOVRwdk0JknCelzwaIyQYOMsmQSG8jX4qtIvZsUPLK0VI8gONEWl5JCAYm44fCD/pub?output=csv
-    const { data } = await this.$axios.get("/sachin.json");
+    const { data } = await this.$axios.get("https://api.jsonbin.io/b/5efb101d7f16b71d48a88aea");
     this.matches = data;
   },
   methods: {
